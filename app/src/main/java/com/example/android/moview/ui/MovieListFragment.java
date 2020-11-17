@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.android.moview.BuildConfig;
 import com.example.android.moview.R;
 import com.example.android.moview.network.ApiService;
 import com.example.android.moview.network.response.MovieResult;
@@ -57,7 +58,7 @@ public class MovieListFragment extends Fragment implements MovieAdapter.ListItem
 
     private void getPopularMovies() {
         ApiService.getInstance()
-                .getPopularMovies(getString(R.string.tmdb_api_key))
+                .getPopularMovies(BuildConfig.API_KEY)
                 .enqueue(new Callback<MovieResult>() {
                     @Override
                     public void onResponse(Call<MovieResult> call, Response<MovieResult> response) {
@@ -80,7 +81,7 @@ public class MovieListFragment extends Fragment implements MovieAdapter.ListItem
 
     private void getBestRankedMovies() {
         ApiService.getInstance()
-                .getTopRatedMovies(getString(R.string.tmdb_api_key))
+                .getTopRatedMovies(BuildConfig.API_KEY)
                 .enqueue(new Callback<MovieResult>() {
                     @Override
                     public void onResponse(Call<MovieResult> call, Response<MovieResult> response) {

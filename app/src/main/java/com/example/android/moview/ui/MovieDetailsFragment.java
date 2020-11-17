@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.android.moview.BuildConfig;
 import com.example.android.moview.R;
 import com.example.android.moview.network.ApiService;
 import com.example.android.moview.network.response.ReviewResult;
@@ -105,7 +106,7 @@ public class MovieDetailsFragment extends Fragment implements TrailerAdapter.Lis
         //Log.i("MOVIE NAME:", movie.getOriginalTitle());
 
         ApiService.getInstance()
-                .getMovieTrailers(movie.getMovieId(), getString(R.string.tmdb_api_key))
+                .getMovieTrailers(movie.getMovieId(), BuildConfig.API_KEY)
                 .enqueue(new Callback<TrailerResult>() {
                     @Override
                     public void onResponse(Call<TrailerResult> call, Response<TrailerResult> response) {
@@ -152,7 +153,7 @@ public class MovieDetailsFragment extends Fragment implements TrailerAdapter.Lis
         Log.i("MOVIE NAME:", movie.getOriginalTitle());
 
         ApiService.getInstance()
-                .getMovieReviews(movie.getMovieId(), getString(R.string.tmdb_api_key))
+                .getMovieReviews(movie.getMovieId(), BuildConfig.API_KEY)
                 .enqueue(new Callback<ReviewResult>() {
                     @Override
                     public void onResponse(Call<ReviewResult> call, Response<ReviewResult> response) {
