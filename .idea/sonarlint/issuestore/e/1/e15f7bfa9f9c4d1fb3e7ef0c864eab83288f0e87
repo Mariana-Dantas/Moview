@@ -1,0 +1,11 @@
+
+V
+java:S1128"9Remove this unused import 'com.squareup.picasso.Picasso'.(£œ¿×8Õ´°†Ý.
+Z
+java:S1155%">Use isEmpty() to check whether the collection is empty or not.(Ó­×(8Ï–…ŒÝ.
+W
+java:S1128"5Remove this unused import 'android.widget.ImageView'.(ú¯ëàüÿÿÿÿ8Õ´°†Ý.
+b
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(Ù¦¶„8…Å˜†Ý.
+O
+java:S3010"-Remove this assignment of "mOnClickListener".(ÐÃ‡ôüÿÿÿÿ8Õ´°†Ý.

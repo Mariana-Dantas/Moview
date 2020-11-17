@@ -1,0 +1,9 @@
+
+X	java:S125j"<This block of commented-out lines of code should be removed.(¸‚Û€8Ìô¡²İ.
+z
+java:S1450."]Remove the "recyclerReview" field and declare it as a local variable in the relevant methods.(·óÑ†8ÈÿÒ±İ.
+K
+java:S1128"")Remove this unused import 'okio.Timeout'.(Èú„Æÿÿÿÿÿ8·À·°İ.
+{
+java:S1450,"^Remove the "recyclerTrailer" field and declare it as a local variable in the relevant methods.(©”Ñ8¢­×±İ.
+o	java:S100P"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚œ‚¾ıÿÿÿÿ8¦»Ó±İ.

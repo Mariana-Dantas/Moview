@@ -1,0 +1,9 @@
+
+u	java:S116
+"TRename this field "iso_639_1" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯­Îşÿÿÿÿ8¯’ñŒİ.
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ïšÏúÿÿÿÿ8¡àòŒİ.
+j	java:S100'"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ôö•Ä8îñôŒİ.
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ïšÏúÿÿÿÿ8¡àòŒİ.
+o	java:S100+"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ò†ºúÿÿÿÿ8îñôŒİ.
+v	java:S116"URename this field "iso_3166_1" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±Éİ¸úÿÿÿÿ8§³ñŒİ.
+b	java:S107"AConstructor has 8 parameters, which is greater than 7 authorized.(ïšÏúÿÿÿÿ8ğ’õŒİ.

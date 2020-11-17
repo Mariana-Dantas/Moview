@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Moview</string>
+    <string name="movie_rating">Movie Rating</string>
+    <string name="movie_popularity">Movie Popularity</string>
+</resources>
