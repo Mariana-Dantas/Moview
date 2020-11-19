@@ -1,9 +1,10 @@
 
-T
-java:S1068 "2Remove this unused "NUM_LIST_ITEMS" private field.(Š™–äùÿÿÿÿ8í³ „İ.
-\
-java:S1161p":Add the "@Override" annotation above this method signature(ÀÚÑ¡ùÿÿÿÿ8ĞÃİ.
-~
-java:S1450!"\Remove the "recyclerMovie" field and declare it as a local variable in the relevant methods.(ïÑ¹‹şÿÿÿÿ8õìáƒİ.
+O
+java:S1128"2Remove this unused import 'android.view.MenuItem'.(Ğ¬Ó‘8¥—¿…Ş.
+L
+java:S1068&"*Remove this unused "mToast" private field.(ÓÉàşÿÿÿÿ8»ÿ„Ş.
 ‚
-java:S1488("`Immediately return this expression instead of assigning it to the temporary variable "fragment".(‰××œúÿÿÿÿ8™ìÁ„İ.
+java:S1488*"`Immediately return this expression instead of assigning it to the temporary variable "fragment".(‰××œúÿÿÿÿ8™ìÁ„İ.
+~
+java:S1450#"\Remove the "recyclerMovie" field and declare it as a local variable in the relevant methods.(ïÑ¹‹şÿÿÿÿ8õìáƒİ.
+]	java:S1254"<This block of commented-out lines of code should be removed.(õ©Ë´ÿÿÿÿÿ8«Ì…Ş.

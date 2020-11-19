@@ -1,6 +1,6 @@
 
-\
-java:S1118":Add a private constructor to hide the implicit public one.(³Æøûÿÿÿÿ8Æ ÆµÛ.
 u
 java:S3008
 "SRename this field "INSTANCE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»¶„øşÿÿÿÿ8…¸¾µÛ.
+\
+java:S1118":Add a private constructor to hide the implicit public one.(³Æøûÿÿÿÿ8Æ ÆµÛ.

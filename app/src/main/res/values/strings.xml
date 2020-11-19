@@ -13,4 +13,10 @@
     <string name="other_error">Other Error</string>
     <string name="error_showing_trailers">Error showing Trailers</string>
     <string name="error_showing_movie_details">Error showing Movie Details</string>
+    <string name="Open">Open</string>
+    <string name="Close">Close</string>
+    <string name="movie_menu">Movie</string>
+    <string name="find">Find</string>
+    <string name="movie_name">Movie Name</string>
+    <string name="error_showing_movies">Error Showing Movies</string>
 </resources>

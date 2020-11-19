@@ -1,9 +1,7 @@
 
-O
-java:S1128"-Remove this unused import 'android.util.Log'.(Ô¦Ø²øÿÿÿÿ8‚®ôàÝ.
-g
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(îÝüóûÿÿÿÿ8þæ˜±Ý.
-O
-java:S3010"-Remove this assignment of "mOnClickListener".(ÐÃ‡ôüÿÿÿÿ8ôíœ±Ý.
 `
-java:S1155%">Use isEmpty() to check whether the collection is empty or not.(’…Èñûÿÿÿÿ8²µð²Ý.
+java:S1155$">Use isEmpty() to check whether the collection is empty or not.(’…Èñûÿÿÿÿ8²µð²Ý.
+g
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(îÝüóûÿÿÿÿ8þæ˜±Ý.
+O
+java:S3010"-Remove this assignment of "mOnClickListener".(ÐÃ‡ôüÿÿÿÿ8ôíœ±Ý.

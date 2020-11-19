@@ -2,15 +2,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/action_movies_rating"
-        android:orderInCategory="1"
-        android:title="@string/movie_rating" />
-    <item
-        android:id="@+id/action_movies_popularity"
-        android:orderInCategory="2"
-        android:title="@string/movie_popularity" />
-    <item
-        android:id="@+id/action_movies_fav"
-        android:orderInCategory="2"
-        android:title="@string/movie_fav" />
+        android:id="@+id/movie_menu"
+        android:title="@string/movie_menu">
+        <menu>
+            <item
+                android:id="@+id/action_movies_rating"
+                android:title="@string/movie_rating" />
+            <item
+                android:id="@+id/action_movies_popularity"
+                android:title="@string/movie_popularity" />
+            <item
+                android:id="@+id/action_movies_fav"
+                android:title="@string/movie_fav" />
+            <item
+                android:id="@+id/find_menu"
+                android:title="@string/find" />
+        </menu>
+    </item>
+
+
 </menu>

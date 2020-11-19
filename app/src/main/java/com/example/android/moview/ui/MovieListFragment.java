@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -37,9 +36,14 @@ public class MovieListFragment extends Fragment implements MovieAdapter.ListItem
     private View rootView;
     private Toast mToast;
     private FavoriteDbHelper favoriteDbHelper;
+    public static final String ARG_ITEM_POSITION = "1";
+    private int itemPosition = 1;
 
-    public static MovieListFragment newInstance() {
+    public static MovieListFragment newInstance(int position) {
         MovieListFragment fragment = new MovieListFragment();
+        Bundle args = new Bundle();
+        args.putSerializable(ARG_ITEM_POSITION, position);
+        fragment.setArguments(args);
         return fragment;
     }
 
@@ -48,10 +52,23 @@ public class MovieListFragment extends Fragment implements MovieAdapter.ListItem
         rootView = inflater.inflate(R.layout.movie_list_fragment, container, false);
         configAdapter();
         favoriteDbHelper = new FavoriteDbHelper(getActivity());
-        getPopularMovies();
-        setHasOptionsMenu(true);
+        //getPopularMovies();
+        Bundle bundle = this.getArguments();
+
+        if (bundle != null) {
+            itemPosition = (int) bundle.getSerializable(ARG_ITEM_POSITION);
+            if (itemPosition == 1) {
+                getBestRankedMovies();
+            } else if (itemPosition == 2) {
+                getPopularMovies();
+            } else if (itemPosition == 3) {
+                getFavMovies();
+            }
+        }
+        //setHasOptionsMenu(true);
         return rootView;
     }
+
 
     // Configs List Adapter
     private void configAdapter() {
@@ -63,7 +80,7 @@ public class MovieListFragment extends Fragment implements MovieAdapter.ListItem
     }
 
     // gets most popular Movies from API
-    private void getPopularMovies() {
+    public void getPopularMovies() {
         ApiService.getInstance()
                 .getPopularMovies(BuildConfig.API_KEY)
                 .enqueue(new Callback<MovieResult>() {
@@ -87,7 +104,7 @@ public class MovieListFragment extends Fragment implements MovieAdapter.ListItem
     }
 
     // gets Best ranked movies from API
-    private void getBestRankedMovies() {
+    public void getBestRankedMovies() {
         ApiService.getInstance()
                 .getTopRatedMovies(BuildConfig.API_KEY)
                 .enqueue(new Callback<MovieResult>() {
@@ -120,26 +137,8 @@ public class MovieListFragment extends Fragment implements MovieAdapter.ListItem
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-    // Click responce when item from menu is clicked
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_movies_rating:
-                getBestRankedMovies();
-                return true;
-            case R.id.action_movies_popularity:
-                getPopularMovies();
-                return true;
-            case R.id.action_movies_fav:
-                getFavMovies();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
     // Gets Favorit Movies from the database
-    private void getFavMovies() {
+    public void getFavMovies() {
         movieAdapter.setMovies(
                 favoriteDbHelper.getAllFavorite()
         );
