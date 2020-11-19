@@ -50,7 +50,7 @@ public class Mapper {
             final Review review = new Review(
                     reviewResponse.getReviewId(),
                     reviewResponse.getAuthor(),
-                    reviewResponse.getAuthor(),
+                    reviewResponse.getContent(),
                     reviewResponse.getUrl());
             reviewList.add(review);
         }

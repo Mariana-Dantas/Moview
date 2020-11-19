@@ -9,12 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android.moview.BuildConfig;
 import com.example.android.moview.R;
+import com.example.android.moview.data.FavoriteDbHelper;
 import com.example.android.moview.network.ApiService;
 import com.example.android.moview.network.response.MovieResult;
 import com.example.android.moview.utils.Mapper;
@@ -26,13 +28,15 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.example.android.moview.R.string.error_best_ranked_movies;
+
 public class MovieListFragment extends Fragment implements MovieAdapter.ListItemClickListener {
 
-    private static final int NUM_LIST_ITEMS = 100;
     private RecyclerView recyclerMovie;
     private MovieAdapter movieAdapter;
     private View rootView;
     private Toast mToast;
+    private FavoriteDbHelper favoriteDbHelper;
 
     public static MovieListFragment newInstance() {
         MovieListFragment fragment = new MovieListFragment();
@@ -43,11 +47,13 @@ public class MovieListFragment extends Fragment implements MovieAdapter.ListItem
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.movie_list_fragment, container, false);
         configAdapter();
+        favoriteDbHelper = new FavoriteDbHelper(getActivity());
         getPopularMovies();
         setHasOptionsMenu(true);
         return rootView;
     }
 
+    // Configs List Adapter
     private void configAdapter() {
         recyclerMovie = rootView.findViewById(R.id.recycler_movie);
         movieAdapter = new MovieAdapter(this);
@@ -56,60 +62,65 @@ public class MovieListFragment extends Fragment implements MovieAdapter.ListItem
         recyclerMovie.setAdapter(movieAdapter);
     }
 
+    // gets most popular Movies from API
     private void getPopularMovies() {
         ApiService.getInstance()
                 .getPopularMovies(BuildConfig.API_KEY)
                 .enqueue(new Callback<MovieResult>() {
                     @Override
-                    public void onResponse(Call<MovieResult> call, Response<MovieResult> response) {
+                    public void onResponse(@NonNull Call<MovieResult> call, @NonNull Response<MovieResult> response) {
                         if (response.isSuccessful()) {
                             movieAdapter.setMovies(
                                     Mapper.fromResponseToMainMovie(response.body().getMovieResults())
                             );
                         } else {
-                            Toast.makeText(getActivity(), "Error showing Popular Movies", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), R.string.error_pop_movies, Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<MovieResult> call, Throwable t) {
+                    public void onFailure(@NonNull Call<MovieResult> call, @NonNull Throwable t) {
                         showError();
                     }
                 });
 
     }
 
+    // gets Best ranked movies from API
     private void getBestRankedMovies() {
         ApiService.getInstance()
                 .getTopRatedMovies(BuildConfig.API_KEY)
                 .enqueue(new Callback<MovieResult>() {
                     @Override
-                    public void onResponse(Call<MovieResult> call, Response<MovieResult> response) {
+                    public void onResponse(@NonNull Call<MovieResult> call, @NonNull Response<MovieResult> response) {
                         if (response.isSuccessful()) {
                             movieAdapter.setMovies(
                                     Mapper.fromResponseToMainMovie(response.body().getMovieResults())
                             );
                         } else {
-                            Toast.makeText(getActivity(), "Error showing Best Ranked Movies", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), error_best_ranked_movies, Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<MovieResult> call, Throwable t) {
+                    public void onFailure(@NonNull Call<MovieResult> call, @NonNull Throwable t) {
                         showError();
                     }
                 });
     }
 
     private void showError() {
-        Toast.makeText(getActivity(), "Error showing Movie List", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), R.string.error_showind_movie_list, Toast.LENGTH_SHORT).show();
     }
 
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    // Inflates menu
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.main, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 
+    // Click responce when item from menu is clicked
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -119,24 +130,26 @@ public class MovieListFragment extends Fragment implements MovieAdapter.ListItem
             case R.id.action_movies_popularity:
                 getPopularMovies();
                 return true;
+            case R.id.action_movies_fav:
+                getFavMovies();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
+    // Gets Favorit Movies from the database
+    private void getFavMovies() {
+        movieAdapter.setMovies(
+                favoriteDbHelper.getAllFavorite()
+        );
+    }
+
+    // Click responce when a movie is clicked
     @Override
     public void onListItemClick(Movie movie) {
-
         MovieDetailsFragment movieDetailsFragment = MovieDetailsFragment.newInstance(movie);
         Utils.setFragment(getFragmentManager(), movieDetailsFragment);
-
-        if (mToast != null) {
-            mToast.cancel();
-        }
-        String toastMessage = "Item #" + movie.getOriginalTitle() + " clicked.";
-        mToast = Toast.makeText(getActivity(), toastMessage, Toast.LENGTH_LONG);
-
-        mToast.show();
     }
 
 }

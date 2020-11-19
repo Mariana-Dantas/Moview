@@ -1,5 +1,16 @@
 <resources>
     <string name="app_name">Moview</string>
-    <string name="movie_rating">Movie Rating</string>
-    <string name="movie_popularity">Movie Popularity</string>
+    <string name="movie_rating">Rating</string>
+    <string name="movie_popularity">Popularity</string>
+    <string name="favorit">Favorit:</string>
+    <string name="movie_fav">Favorits</string>
+    <string name="error_best_ranked_movies">Error showing Best Ranked Movies</string>
+    <string name="error_showind_movie_list">Error showing Movie List</string>
+    <string name="error_pop_movies">Error showing Popular Movies</string>
+    <string name="error_showing_reviews">Error showing reviews1</string>
+    <string name="Timeout">Timeout</string>
+    <string name="conversion_error">ConversionError</string>
+    <string name="other_error">Other Error</string>
+    <string name="error_showing_trailers">Error showing Trailers</string>
+    <string name="error_showing_movie_details">Error showing Movie Details</string>
 </resources>

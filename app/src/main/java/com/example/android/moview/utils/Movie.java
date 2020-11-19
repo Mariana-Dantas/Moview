@@ -4,15 +4,15 @@ import java.io.Serializable;
 
 public class Movie implements Serializable {
 
-    private final int movieId;
-    private final String originalTitle;
-    private final String posterPath;
-    private final float popularity;
-    private final String releaseDate;
-    private final String overview;
-    private final int runtime;
-    private final boolean video;
-    private final float rank;
+    private int movieId;
+    private String originalTitle;
+    private String posterPath;
+    private float popularity;
+    private String releaseDate;
+    private String overview;
+    private int runtime;
+    private boolean video;
+    private float rank;
 
     public Movie(int movieId, String originalTitle, String posterPath, float popularity, String releaseDate, String overview, int runtime, boolean video, float rank) {
         this.movieId = movieId;
@@ -24,6 +24,13 @@ public class Movie implements Serializable {
         this.runtime = runtime;
         this.video = video;
         this.rank = rank;
+    }
+
+    public Movie() {
+        //this.movieId = 0;
+        //this.originalTitle = "";
+        //this.posterPath = "";
+        //this.overview = "";
     }
 
     public float getRank() {
@@ -61,4 +68,21 @@ public class Movie implements Serializable {
     public String getPosterPath() {
         return posterPath;
     }
+
+    public void setMovieID(int id) {
+        this.movieId = id;
+    }
+
+    public void setOriginalTitle(String title) {
+        this.originalTitle = title;
+    }
+
+    public void setOverview(String overview) {
+        this.overview = overview;
+    }
+
+    public void setPosterPath(String posterPath) {
+        this.posterPath = posterPath;
+    }
+
 }

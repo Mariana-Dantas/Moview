@@ -1,9 +1,25 @@
 
-X	java:S125j"<This block of commented-out lines of code should be removed.(¸‚Û€8Ìô¡²İ.
-z
-java:S1450."]Remove the "recyclerReview" field and declare it as a local variable in the relevant methods.(·óÑ†8ÈÿÒ±İ.
+M
+java:S1128,"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8Ñ·ââİ.
+o	java:S100r"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚œ‚¾ıÿÿÿÿ8ˆ©Òäİ.
 K
-java:S1128"")Remove this unused import 'okio.Timeout'.(Èú„Æÿÿÿÿÿ8·À·°İ.
+java:S1604“"(Make this anonymous inner class a lambda(ã©Å—úÿÿÿÿ8ˆ©Òäİ.
+x
+java:S1128"VRemove this unused import 'com.example.android.moview.network.response.MovieResponse'.(ğïä£øÿÿÿÿ8¹ê¬äİ.
+t
+java:S1450@"WRemove the "favorite" field and declare it as a local variable in the relevant methods.(ãÚ€Ü8¦¨„âİ.
+E	java:S108`")Either remove or fill this block of code.(å¥‡8ˆ©Òäİ.
 {
-java:S1450,"^Remove the "recyclerTrailer" field and declare it as a local variable in the relevant methods.(©”Ñ8¢­×±İ.
-o	java:S100P"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚œ‚¾ıÿÿÿÿ8¦»Ó±İ.
+java:S1450:"^Remove the "recyclerTrailer" field and declare it as a local variable in the relevant methods.(©”Ñ8¢­×±İ.
+X	java:S125s"<This block of commented-out lines of code should be removed.(Ù¾ŠÖ8À›Õäİ.
+N
+java:S1128"1Remove this unused import 'android.os.AsyncTask'.(À»¥—8Äûÿáİ.
+z
+java:S1450<"]Remove the "recyclerReview" field and declare it as a local variable in the relevant methods.(·óÑ†8ÈÿÒ±İ.
+£
+java:S1186f"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Àâ£§şÿÿÿÿ8ˆ©Òäİ.
+^	java:S125ú"<This block of commented-out lines of code should be removed.(”æ¥›üÿÿÿÿ8ˆ©Òäİ.
+M
+java:S1068A"0Remove this unused "movieAdapter" private field.(õ«®æ8’óÅäİ.
+M
+java:S1144X"0Remove this unused private "getMovieDet" method.(¾ÈˆÔ8À›Õäİ.

@@ -1,8 +1,8 @@
 
-v	java:S116"URename this field "iso_3166_1" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±Éİ¸úÿÿÿÿ8¶¾†İ.
-o	java:S100!"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ò†ºúÿÿÿÿ8”¿†İ.
-m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ç³‘8¶¾†İ.
-]	java:S107"AConstructor has 8 parameters, which is greater than 7 authorized.(Ç³‘8¶¾†İ.
-m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ç³‘8¶¾†İ.
-j	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ôö•Ä8”¿†İ.
-u	java:S116"TRename this field "iso_639_1" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯­Îşÿÿÿÿ8¶¾†İ.
+o	java:S100#"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ò†ºúÿÿÿÿ8”¿†İ.
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ç³‘8¶¾†İ.
+j	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ôö•Ä8”¿†İ.
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ç³‘8¶¾†İ.
+u	java:S116"TRename this field "iso_639_1" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯­Îşÿÿÿÿ8¶¾†İ.
+]	java:S107"AConstructor has 8 parameters, which is greater than 7 authorized.(Ç³‘8¶¾†İ.
+v	java:S116	"URename this field "iso_3166_1" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±Éİ¸úÿÿÿÿ8¶¾†İ.

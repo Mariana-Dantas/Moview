@@ -26,7 +26,8 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ReviewView
     @NonNull
     @Override
     public ReviewAdapter.ReviewViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_review, parent, false);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_review, parent, false);
         return new ReviewAdapter.ReviewViewHolder(view);
     }
 
@@ -59,6 +60,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ReviewView
             super(itemView);
             reviewAuthor = itemView.findViewById(R.id.review_author);
             reviewContent = itemView.findViewById(R.id.review_content);
+
             itemView.setOnClickListener(this);
         }
 

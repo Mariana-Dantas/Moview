@@ -1,5 +1,6 @@
 package com.example.android.moview.network;
 
+import com.example.android.moview.network.response.MovieResponse;
 import com.example.android.moview.network.response.MovieResult;
 import com.example.android.moview.network.response.ReviewResult;
 import com.example.android.moview.network.response.TrailerResult;
@@ -17,13 +18,13 @@ public interface MovieService {
     @GET("movie/top_rated")
     Call<MovieResult> getTopRatedMovies(@Query("api_key") String apiKey);
 
-    @GET("/movie/{movie_id}")
-    Call<MovieResult> getMovieDetails(@Path("movie_id") int id, @Query("api_key") String apiKey);
+    @GET("movie/{movie_id}")
+    Call<MovieResponse> getMovieDetails(@Path("movie_id") int id, @Query("api_key") String apiKey);
 
     @GET("movie/{movie_id}/videos")
     Call<TrailerResult> getMovieTrailers(@Path("movie_id") int id, @Query("api_key") String apiKey);
 
-    @GET("/movie/{movie_id}/reviews")
+    @GET("movie/{movie_id}/reviews")
     Call<ReviewResult> getMovieReviews(@Path("movie_id") int id, @Query("api_key") String apiKey);
 
 }
