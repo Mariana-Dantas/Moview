@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -52,16 +53,19 @@ public class MovieListFragment extends Fragment implements MovieAdapter.ListItem
         rootView = inflater.inflate(R.layout.movie_list_fragment, container, false);
         configAdapter();
         favoriteDbHelper = new FavoriteDbHelper(getActivity());
-        //getPopularMovies();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
         Bundle bundle = this.getArguments();
 
         if (bundle != null) {
             itemPosition = (int) bundle.getSerializable(ARG_ITEM_POSITION);
             if (itemPosition == 1) {
+                ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.rating);
                 getBestRankedMovies();
             } else if (itemPosition == 2) {
+                ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.popularity);
                 getPopularMovies();
             } else if (itemPosition == 3) {
+                ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.favorits);
                 getFavMovies();
             }
         }

@@ -3,17 +3,17 @@
 
     <item
         android:id="@+id/movie_menu"
-        android:title="@string/movie_menu">
+        android:title="@string/movies">
         <menu>
             <item
                 android:id="@+id/action_movies_rating"
-                android:title="@string/movie_rating" />
+                android:title="@string/rating" />
             <item
                 android:id="@+id/action_movies_popularity"
-                android:title="@string/movie_popularity" />
+                android:title="@string/popularity" />
             <item
                 android:id="@+id/action_movies_fav"
-                android:title="@string/movie_fav" />
+                android:title="@string/favorits" />
             <item
                 android:id="@+id/find_menu"
                 android:title="@string/find" />

@@ -1,22 +1,27 @@
 <resources>
     <string name="app_name">Moview</string>
-    <string name="movie_rating">Rating</string>
-    <string name="movie_popularity">Popularity</string>
+
+    <string name="rating">Rating</string>
+    <string name="popularity">Popularity</string>
     <string name="favorit">Favorit:</string>
-    <string name="movie_fav">Favorits</string>
+    <string name="favorits">Favorits</string>
+    <string name="Timeout">Timeout</string>
+    <string name="Open">Open</string>
+    <string name="Close">Close</string>
+    <string name="movies">Movies</string>
+    <string name="find">Find</string>
+    <string name="movie_name">Movie Name</string>
+    <string name="movies_by">Movies by:</string>
+    <string name="find_movie">Find Movie</string>
+
     <string name="error_best_ranked_movies">Error showing Best Ranked Movies</string>
     <string name="error_showind_movie_list">Error showing Movie List</string>
     <string name="error_pop_movies">Error showing Popular Movies</string>
     <string name="error_showing_reviews">Error showing reviews1</string>
-    <string name="Timeout">Timeout</string>
-    <string name="conversion_error">ConversionError</string>
-    <string name="other_error">Other Error</string>
+    <string name="error_showing_movies">Error Showing Movies</string>
     <string name="error_showing_trailers">Error showing Trailers</string>
     <string name="error_showing_movie_details">Error showing Movie Details</string>
-    <string name="Open">Open</string>
-    <string name="Close">Close</string>
-    <string name="movie_menu">Movie</string>
-    <string name="find">Find</string>
-    <string name="movie_name">Movie Name</string>
-    <string name="error_showing_movies">Error Showing Movies</string>
+    <string name="no_movies_were_found">No Movies were found</string>
+    <string name="conversion_error">Conversion Error</string>
+    <string name="other_error">Other Error</string>
 </resources>

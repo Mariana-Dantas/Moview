@@ -52,25 +52,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         switch (item.getItemId()) {
             case R.id.action_movies_rating:
+
                 itemPosition = 1;
                 movieListFragment = MovieListFragment.newInstance(itemPosition);
-
                 Utils.setFragment(getSupportFragmentManager(), movieListFragment);
                 mDrawerLayout.closeDrawer(GravityCompat.START);
                 return true;
             case R.id.action_movies_popularity:
+
                 itemPosition = 2;
                 movieListFragment = MovieListFragment.newInstance(itemPosition);
                 Utils.setFragment(getSupportFragmentManager(), movieListFragment);
                 mDrawerLayout.closeDrawer(GravityCompat.START);
                 return true;
             case R.id.action_movies_fav:
+
                 itemPosition = 3;
                 movieListFragment = MovieListFragment.newInstance(itemPosition);
                 Utils.setFragment(getSupportFragmentManager(), movieListFragment);
                 mDrawerLayout.closeDrawer(GravityCompat.START);
                 return true;
             case R.id.find_menu:
+
                 itemPosition = 4;
                 movieFindFragment = MovieFindFragment.newInstance();
                 Utils.setFragment(getSupportFragmentManager(), movieFindFragment);

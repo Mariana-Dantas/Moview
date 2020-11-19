@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -84,6 +85,8 @@ public class MovieDetailsFragment extends Fragment implements TrailerAdapter.Lis
         Bundle bundle = this.getArguments();
         configTrailerAdapter();
         configReviewAdapter();
+
+        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
 
         if (bundle != null) {
             movie = (Movie) bundle.getSerializable(ARG_MOVIE);
