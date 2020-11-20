@@ -67,18 +67,6 @@ public class MovieDetailsFragment extends Fragment implements TrailerAdapter.Lis
         return fragment;
     }
 
-    // Opens youtube with the Trailer Key
-    public static void watchYoutubeVideo(Context context, String key) {
-        Intent appIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:" + key));
-        Intent webIntent = new Intent(Intent.ACTION_VIEW,
-                Uri.parse("http://www.youtube.com/watch?v=" + key));
-        try {
-            context.startActivity(appIntent);
-        } catch (ActivityNotFoundException ex) {
-            context.startActivity(webIntent);
-        }
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         detailsView = inflater.inflate(R.layout.movie_details_fragment, container, false);
@@ -119,6 +107,18 @@ public class MovieDetailsFragment extends Fragment implements TrailerAdapter.Lis
         recyclerReview.setAdapter(reviewAdapter);
     }
 
+    // Opens youtube with the Trailer Key
+    public static void watchYoutubeVideo(Context context, String key) {
+        Intent appIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:" + key));
+        Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                Uri.parse("http://www.youtube.com/watch?v=" + key));
+        try {
+            context.startActivity(appIntent);
+        } catch (ActivityNotFoundException ex) {
+            context.startActivity(webIntent);
+        }
+    }
+
     // Calls diferent functions to set up the movie page
     private void movieDetails() {
         // Gets Title and details
@@ -127,7 +127,7 @@ public class MovieDetailsFragment extends Fragment implements TrailerAdapter.Lis
         getTrailers();
         // Gets Movie Reviews
         getReviews();
-        // Checks if movie is on favorit list and add's//delete if the user click on switch
+        // Checks if movie is on favorite list and add's//delete if the user click on switch
         getFavs();
     }
 
@@ -166,6 +166,7 @@ public class MovieDetailsFragment extends Fragment implements TrailerAdapter.Lis
                     @Override
                     public void onFailure(@NonNull Call<MovieResponse> call, @NonNull Throwable t) {
                         Toast.makeText(getActivity(), error_showing_movie_details, Toast.LENGTH_SHORT).show();
+                        showError(t);
                     }
                 });
     }
@@ -189,19 +190,7 @@ public class MovieDetailsFragment extends Fragment implements TrailerAdapter.Lis
                     @Override
                     public void onFailure(@NonNull Call<TrailerResult> call, @NonNull Throwable t) {
                         Toast.makeText(getActivity(), error_showing_trailers, Toast.LENGTH_SHORT).show();
-                        if (t instanceof IOException) {
-                            errorType[0] = getString(R.string.Timeout);
-                            errorDesc[0] = String.valueOf(t.getCause());
-                            Log.i(errorType[0], errorDesc[0]);
-                        } else if (t instanceof IllegalStateException) {
-                            errorType[0] = getString(R.string.conversion_error);
-                            errorDesc[0] = String.valueOf(t.getCause());
-                            Log.i(errorType[0], errorDesc[0]);
-                        } else {
-                            errorType[0] = getString(R.string.other_error);
-                            errorDesc[0] = String.valueOf(t.getLocalizedMessage());
-                            Log.i(errorType[0], errorDesc[0]);
-                        }
+                        showError(t);
                     }
                 });
 
@@ -226,19 +215,7 @@ public class MovieDetailsFragment extends Fragment implements TrailerAdapter.Lis
                     @Override
                     public void onFailure(@NonNull Call<ReviewResult> call, @NonNull Throwable t) {
                         Toast.makeText(getActivity(), error_showing_reviews, Toast.LENGTH_SHORT).show();
-                        if (t instanceof IOException) {
-                            errorType[0] = getString(R.string.Timeout);
-                            errorDesc[0] = String.valueOf(t.getCause());
-                            Log.i(errorType[0], errorDesc[0]);
-                        } else if (t instanceof IllegalStateException) {
-                            errorType[0] = getString(R.string.conversion_error);
-                            errorDesc[0] = String.valueOf(t.getCause());
-                            Log.i(errorType[0], errorDesc[0]);
-                        } else {
-                            errorType[0] = getString(R.string.other_error);
-                            errorDesc[0] = String.valueOf(t.getLocalizedMessage());
-                            Log.i(errorType[0], errorDesc[0]);
-                        }
+                        showError(t);
                     }
                 });
     }
@@ -273,6 +250,22 @@ public class MovieDetailsFragment extends Fragment implements TrailerAdapter.Lis
     @Override
     public void onListItemClick(Trailer trailer) {
         watchYoutubeVideo(getActivity(), trailer.getKey());
+    }
+
+    private void showError(Throwable t) {
+        if (t instanceof IOException) {
+            errorType[0] = getString(R.string.Timeout);
+            errorDesc[0] = String.valueOf(t.getCause());
+            Log.i(errorType[0], errorDesc[0]);
+        } else if (t instanceof IllegalStateException) {
+            errorType[0] = getString(R.string.conversion_error);
+            errorDesc[0] = String.valueOf(t.getCause());
+            Log.i(errorType[0], errorDesc[0]);
+        } else {
+            errorType[0] = getString(R.string.other_error);
+            errorDesc[0] = String.valueOf(t.getLocalizedMessage());
+            Log.i(errorType[0], errorDesc[0]);
+        }
     }
 
     // Adds Movie on the database

@@ -2,6 +2,7 @@ package com.example.android.moview.ui;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,6 +26,8 @@ import com.example.android.moview.utils.Movie;
 import com.example.android.moview.utils.MovieAdapter;
 import com.example.android.moview.utils.Utils;
 
+import java.io.IOException;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -40,6 +43,8 @@ public class MovieListFragment extends Fragment implements MovieAdapter.ListItem
     private FavoriteDbHelper favoriteDbHelper;
     public static final String ARG_ITEM_POSITION = "1";
     private int itemPosition = 1;
+    private final String[] errorType = {""};
+    private final String[] errorDesc = {""};
 
     public static MovieListFragment newInstance(int position) {
         MovieListFragment fragment = new MovieListFragment();
@@ -118,7 +123,7 @@ public class MovieListFragment extends Fragment implements MovieAdapter.ListItem
                     }
                     @Override
                     public void onFailure(@NonNull Call<MovieResult> call, @NonNull Throwable t) {
-                        showError();
+                        showError(t);
                     }
                 });
 
@@ -142,13 +147,26 @@ public class MovieListFragment extends Fragment implements MovieAdapter.ListItem
 
                     @Override
                     public void onFailure(@NonNull Call<MovieResult> call, @NonNull Throwable t) {
-                        showError();
+                        Toast.makeText(getActivity(), R.string.error_showind_movie_list, Toast.LENGTH_SHORT).show();
+                        showError(t);
                     }
                 });
     }
 
-    private void showError() {
-        Toast.makeText(getActivity(), R.string.error_showind_movie_list, Toast.LENGTH_SHORT).show();
+    private void showError(Throwable t) {
+        if (t instanceof IOException) {
+            errorType[0] = getString(R.string.Timeout);
+            errorDesc[0] = String.valueOf(t.getCause());
+            Log.i(errorType[0], errorDesc[0]);
+        } else if (t instanceof IllegalStateException) {
+            errorType[0] = getString(R.string.conversion_error);
+            errorDesc[0] = String.valueOf(t.getCause());
+            Log.i(errorType[0], errorDesc[0]);
+        } else {
+            errorType[0] = getString(R.string.other_error);
+            errorDesc[0] = String.valueOf(t.getLocalizedMessage());
+            Log.i(errorType[0], errorDesc[0]);
+        }
     }
 
     // Inflates menu

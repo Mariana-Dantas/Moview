@@ -66,14 +66,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 mDrawerLayout.closeDrawer(GravityCompat.START);
                 return true;
             case R.id.action_movies_fav:
-
                 itemPosition = 3;
                 movieListFragment = MovieListFragment.newInstance(itemPosition);
                 Utils.setFragment(getSupportFragmentManager(), movieListFragment);
                 mDrawerLayout.closeDrawer(GravityCompat.START);
                 return true;
             case R.id.find_menu:
-
                 itemPosition = 4;
                 movieFindFragment = MovieFindFragment.newInstance();
                 Utils.setFragment(getSupportFragmentManager(), movieFindFragment);
@@ -93,6 +91,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
     }
-
 
 }

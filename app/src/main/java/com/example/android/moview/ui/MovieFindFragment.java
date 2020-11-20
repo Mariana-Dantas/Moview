@@ -2,6 +2,7 @@ package com.example.android.moview.ui;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,8 @@ import com.example.android.moview.utils.Movie;
 import com.example.android.moview.utils.MovieAdapter;
 import com.example.android.moview.utils.Utils;
 
+import java.io.IOException;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -34,6 +37,8 @@ public class MovieFindFragment extends Fragment implements MovieAdapter.ListItem
     private MovieAdapter movieSearchAdapter;
     private RecyclerView recyclerMovieSearch;
     private String query;
+    private final String[] errorType = {""};
+    private final String[] errorDesc = {""};
 
     public static MovieFindFragment newInstance() {
         Bundle args = new Bundle();
@@ -50,10 +55,10 @@ public class MovieFindFragment extends Fragment implements MovieAdapter.ListItem
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.movie_find_fragment, container, false);
+        super.onCreate(savedInstanceState);
 
         EditText queryText = rootView.findViewById(R.id.editText_movie_name);
 
-        super.onCreate(savedInstanceState);
         ((AppCompatActivity) getActivity()).getSupportActionBar().show();
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.find_movie);
 
@@ -91,6 +96,7 @@ public class MovieFindFragment extends Fragment implements MovieAdapter.ListItem
                     @Override
                     public void onFailure(@NonNull Call<MovieResult> call, @NonNull Throwable t) {
                         Toast.makeText(getActivity(), R.string.error_showing_movies, Toast.LENGTH_SHORT).show();
+                        showError(t);
                     }
                 });
     }
@@ -119,4 +125,21 @@ public class MovieFindFragment extends Fragment implements MovieAdapter.ListItem
         MovieDetailsFragment movieDetailsFragment = MovieDetailsFragment.newInstance(movie);
         Utils.setFragment(getFragmentManager(), movieDetailsFragment);
     }
+
+    private void showError(Throwable t) {
+        if (t instanceof IOException) {
+            errorType[0] = getString(R.string.Timeout);
+            errorDesc[0] = String.valueOf(t.getCause());
+            Log.i(errorType[0], errorDesc[0]);
+        } else if (t instanceof IllegalStateException) {
+            errorType[0] = getString(R.string.conversion_error);
+            errorDesc[0] = String.valueOf(t.getCause());
+            Log.i(errorType[0], errorDesc[0]);
+        } else {
+            errorType[0] = getString(R.string.other_error);
+            errorDesc[0] = String.valueOf(t.getLocalizedMessage());
+            Log.i(errorType[0], errorDesc[0]);
+        }
+    }
+
 }

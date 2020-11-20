@@ -3,19 +3,24 @@
 
     <item
         android:id="@+id/movie_menu"
+        android:icon="@drawable/movie_24px"
         android:title="@string/movies">
         <menu>
             <item
                 android:id="@+id/action_movies_rating"
+                android:icon="@drawable/trending_up_24px"
                 android:title="@string/rating" />
             <item
                 android:id="@+id/action_movies_popularity"
+                android:icon="@drawable/trending_up_24px"
                 android:title="@string/popularity" />
             <item
                 android:id="@+id/action_movies_fav"
+                android:icon="@drawable/star_rate_24px"
                 android:title="@string/favorits" />
             <item
                 android:id="@+id/find_menu"
+                android:icon="@drawable/search_24px"
                 android:title="@string/find" />
         </menu>
     </item>
