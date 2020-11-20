@@ -80,7 +80,5 @@ w
 Gapp/src/main/java/com/example/android/moview/data/FavoriteContract.java,b\b\bbf718ce4649b31843d2ef00cd8a307c376513f6
 w
 Gapp/src/main/java/com/example/android/moview/data/FavoriteDbHelper.java,9\d\9d956268f83a64fa1c8b97b9166a3c2bb975b380
-_
-/app/src/main/res/layout/movie_find_fragment.xml,8\9\89a8a33935f395dd3a28d0534f7fb1466308edd6
 v
 Fapp/src/main/java/com/example/android/moview/ui/MovieFindFragment.java,8\0\80e19104aefffce4a4e9cd03155a18909488c9f3
