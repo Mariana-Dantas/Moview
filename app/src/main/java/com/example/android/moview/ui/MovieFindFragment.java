@@ -1,5 +1,6 @@
 package com.example.android.moview.ui;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,11 +43,17 @@ public class MovieFindFragment extends Fragment implements MovieAdapter.ListItem
     }
 
     @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.movie_find_fragment, container, false);
 
         EditText queryText = rootView.findViewById(R.id.editText_movie_name);
 
+        super.onCreate(savedInstanceState);
         ((AppCompatActivity) getActivity()).getSupportActionBar().show();
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.find_movie);
 
@@ -91,7 +98,18 @@ public class MovieFindFragment extends Fragment implements MovieAdapter.ListItem
     private void configAdapter() {
         recyclerMovieSearch = rootView.findViewById(R.id.movie_find_recycler);
         movieSearchAdapter = new MovieAdapter(this);
-        RecyclerView.LayoutManager movieLayoutManager = new GridLayoutManager(getActivity(), 2);
+
+        RecyclerView.LayoutManager movieLayoutManager;
+        //checkOrientation
+        int orientation = getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            movieLayoutManager = new GridLayoutManager(getContext(), 4);
+            // In landscape
+        } else {
+            movieLayoutManager = new GridLayoutManager(getContext(), 2);
+            // In portrait
+        }
+        //RecyclerView.LayoutManager movieLayoutManager = new GridLayoutManager(getActivity(), 2);
         recyclerMovieSearch.setLayoutManager(movieLayoutManager);
         recyclerMovieSearch.setAdapter(movieSearchAdapter);
     }

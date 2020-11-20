@@ -1,5 +1,6 @@
 package com.example.android.moview.ui;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -56,6 +57,8 @@ public class MovieListFragment extends Fragment implements MovieAdapter.ListItem
         ((AppCompatActivity) getActivity()).getSupportActionBar().show();
         Bundle bundle = this.getArguments();
 
+        super.onCreate(savedInstanceState);
+
         if (bundle != null) {
             itemPosition = (int) bundle.getSerializable(ARG_ITEM_POSITION);
             if (itemPosition == 1) {
@@ -69,16 +72,31 @@ public class MovieListFragment extends Fragment implements MovieAdapter.ListItem
                 getFavMovies();
             }
         }
-        //setHasOptionsMenu(true);
         return rootView;
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
 
     // Configs List Adapter
     private void configAdapter() {
         recyclerMovie = rootView.findViewById(R.id.recycler_movie);
         movieAdapter = new MovieAdapter(this);
-        RecyclerView.LayoutManager movieLayoutManager = new GridLayoutManager(getActivity(), 2);
+
+        RecyclerView.LayoutManager movieLayoutManager;
+        //checkOrientation
+        int orientation = getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            movieLayoutManager = new GridLayoutManager(getContext(), 4);
+            // In landscape
+        } else {
+            movieLayoutManager = new GridLayoutManager(getContext(), 2);
+            // In portrait
+        }
+
+        //RecyclerView.LayoutManager movieLayoutManager = new GridLayoutManager(getActivity(), 2);
         recyclerMovie.setLayoutManager(movieLayoutManager);
         recyclerMovie.setAdapter(movieAdapter);
     }
@@ -98,7 +116,6 @@ public class MovieListFragment extends Fragment implements MovieAdapter.ListItem
                             Toast.makeText(getActivity(), R.string.error_pop_movies, Toast.LENGTH_SHORT).show();
                         }
                     }
-
                     @Override
                     public void onFailure(@NonNull Call<MovieResult> call, @NonNull Throwable t) {
                         showError();

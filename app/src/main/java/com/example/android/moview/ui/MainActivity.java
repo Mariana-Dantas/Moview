@@ -27,8 +27,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        movieListFragment = MovieListFragment.newInstance(itemPosition);
-        Utils.setFragment(getSupportFragmentManager(), movieListFragment);
+        if (savedInstanceState == null) {
+            movieListFragment = MovieListFragment.newInstance(itemPosition);
+            Utils.setFragment(getSupportFragmentManager(), movieListFragment);
+        }
 
         mDrawerLayout = findViewById(R.id.drawerLayout);
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.Open, R.string.Close);
@@ -52,14 +54,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         switch (item.getItemId()) {
             case R.id.action_movies_rating:
-
                 itemPosition = 1;
                 movieListFragment = MovieListFragment.newInstance(itemPosition);
                 Utils.setFragment(getSupportFragmentManager(), movieListFragment);
                 mDrawerLayout.closeDrawer(GravityCompat.START);
                 return true;
             case R.id.action_movies_popularity:
-
                 itemPosition = 2;
                 movieListFragment = MovieListFragment.newInstance(itemPosition);
                 Utils.setFragment(getSupportFragmentManager(), movieListFragment);
@@ -87,6 +87,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void setNavigationViewListener() {
         NavigationView navigationView = findViewById(R.id.nav_bar);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
     }
 
 }

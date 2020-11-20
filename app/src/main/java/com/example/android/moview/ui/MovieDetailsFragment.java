@@ -86,6 +86,7 @@ public class MovieDetailsFragment extends Fragment implements TrailerAdapter.Lis
         configTrailerAdapter();
         configReviewAdapter();
 
+        super.onCreate(savedInstanceState);
         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
 
         if (bundle != null) {
@@ -93,6 +94,11 @@ public class MovieDetailsFragment extends Fragment implements TrailerAdapter.Lis
             movieDetails();
         }
         return detailsView;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
     }
 
     // Configure Trailer Adapter

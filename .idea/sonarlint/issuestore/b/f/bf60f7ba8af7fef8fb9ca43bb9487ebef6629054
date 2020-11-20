@@ -1,10 +1,8 @@
 
-O
-java:S1128"2Remove this unused import 'android.view.MenuItem'.(Ð¬Ó‘8¥—¿…Þ.
 L
 java:S1068&"*Remove this unused "mToast" private field.(ÓÉàžþÿÿÿÿ8»ÿž„Þ.
-‚
-java:S1488*"`Immediately return this expression instead of assigning it to the temporary variable "fragment".(‰××œúÿÿÿÿ8™ìÁ„Ý.
+]	java:S125H"<This block of commented-out lines of code should be removed.(õ©Ë´ÿÿÿÿÿ8“ÜùŠÞ.
+}
+java:S1450)"[Remove the "itemPosition" field and declare it as a local variable in the relevant methods.(–‘¯“ûÿÿÿÿ8“ÜùŠÞ.
 ~
 java:S1450#"\Remove the "recyclerMovie" field and declare it as a local variable in the relevant methods.(ïÑ¹‹þÿÿÿÿ8õìáƒÝ.
-]	java:S1254"<This block of commented-out lines of code should be removed.(õ©Ë´ÿÿÿÿÿ8«Ì…Þ.
